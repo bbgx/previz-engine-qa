@@ -51,6 +51,13 @@ test.describe('Studio Page', () => {
     await expect(studioPage.hqModeLabel).toBeVisible();
     await expect(studioPage.hqToggleButton).toBeVisible();
   });
+
+  test('HQ warning should be hidden when toggle is off after reload @regression @ui', async ({ studioPage }) => {
+    test.fail(true, 'BUG-009: HQ warning persists after page reload even when toggle resets to off');
+    await studioPage.toggleHq();
+    await studioPage.goto();
+    await expect(studioPage.hqWarning).toBeHidden();
+  });
 });
 
 test.describe('Studio Generation (mocked)', () => {

@@ -11,6 +11,7 @@ export class StudioPage {
   readonly aspectRatioOptions: Locator;
   readonly hqModeLabel: Locator;
   readonly hqToggleButton: Locator;
+  readonly hqWarning: Locator;
   readonly renderingHeading: Locator;
 
   constructor(private page: Page) {
@@ -27,6 +28,7 @@ export class StudioPage {
 
     this.hqModeLabel = page.getByText('High Quality Mode', { exact: true });
     this.hqToggleButton = this.hqModeLabel.locator('..').getByRole('button');
+    this.hqWarning = page.getByText(/Warning:.*High quality mode/i);
     this.renderingHeading = page.getByRole('heading', { name: 'Rendering Pre-Viz Videos' });
   }
 
@@ -44,6 +46,10 @@ export class StudioPage {
 
   async setVideoCount(count: number) {
     await this.videoCountSpinner.fill(String(count));
+  }
+
+  async toggleHq() {
+    await this.hqToggleButton.click();
   }
 
   async triggerGenerationAndAwaitResponse(prompt: string): Promise<Response> {

@@ -73,8 +73,9 @@ test.describe('Generation Pipeline API', () => {
   });
 });
 
-test.describe('API Security & Bug Verification', () => {
-  test('BUG-002: INVALID_VALUE in video history aspect_ratio @api @regression', async ({ request }) => {
+test.describe('Generation Pipeline — Data Integrity', () => {
+  test('video history should have valid aspect_ratio values @api @regression', async ({ request }) => {
+    test.fail(true, 'BUG-002: some videos have INVALID_VALUE as aspect_ratio');
     const response = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100`);
     const body = await response.json();
 
@@ -82,18 +83,18 @@ test.describe('API Security & Bug Verification', () => {
       (v: { aspect_ratio: string }) => v.aspect_ratio === 'INVALID_VALUE',
     );
 
-    expect(invalidVideos.length).toBeGreaterThanOrEqual(0);
+    expect(invalidVideos.length).toBe(0);
   });
 
-  test('BUG-006: video-status leaks internal Sora error structure @api @regression', async ({ request }) => {
+  test('video-status should return sanitized error for invalid taskId @api @regression', async ({ request }) => {
+    test.fail(true, 'BUG-006: video-status leaks internal Sora API error structure');
     const response = await request.get(`${API_ENDPOINTS.videoStatus}?taskId=invalid-task-123`);
 
-    expect(response.status()).toBe(500);
-    const body = await response.json();
-    expect(body.error).toContain('Failed to query');
+    expect(response.status()).toBe(400);
   });
 
-  test('BUG-003: no rate limiting headers on generate-video @api @regression', async ({ request }) => {
+  test('generate-video should include rate limiting headers @api @regression', async ({ request }) => {
+    test.fail(true, 'BUG-003: no rate limiting on generation endpoint');
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: {
         prompt: PROMPTS.simple,
@@ -104,9 +105,19 @@ test.describe('API Security & Bug Verification', () => {
     });
 
     const rateLimitHeader = response.headers()['x-ratelimit-limit'];
-    const rateLimitRemaining = response.headers()['x-ratelimit-remaining'];
+    expect(rateLimitHeader).toBeDefined();
+  });
 
-    expect(rateLimitHeader).toBeUndefined();
-    expect(rateLimitRemaining).toBeUndefined();
+  test('innocent short prompts should not be flagged by moderation @api @regression', async ({ request }) => {
+    test.fail(true, 'BUG-001: Sora moderation produces false positives on innocuous prompts');
+    const historyResponse = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100`);
+    const body = await historyResponse.json();
+
+    const falsePositives = body.videos.filter(
+      (v: { status: string; prompt: string }) =>
+        v.status === 'failed' && v.prompt.length < 20,
+    );
+
+    expect(falsePositives.length).toBe(0);
   });
 });
