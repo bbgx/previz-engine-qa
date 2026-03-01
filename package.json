@@ -1,20 +1,22 @@
 {
   "name": "validco",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "playwright test",
-    "test:smoke": "playwright test tests/smoke/",
-    "test:api": "playwright test tests/api/",
-    "test:regression": "playwright test tests/regression/",
+    "test:ui": "playwright test --grep @ui",
+    "test:api": "playwright test --grep @api",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "lint": "eslint tests/",
     "report": "playwright show-report"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "packageManager": "pnpm@10.28.1",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.2",
+    "eslint": "^10.0.2",
+    "eslint-plugin-playwright": "^2.8.0",
+    "typescript-eslint": "^8.56.1"
   }
 }

@@ -3,5 +3,5 @@ test-results/
 playwright-report/
 screenshots/
 blob-report/
-dist/
 .pnpm-store/
+.playwright-mcp/
