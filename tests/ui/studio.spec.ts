@@ -52,7 +52,7 @@ test.describe('Studio Page', () => {
     await expect(studioPage.hqToggleButton).toBeVisible();
   });
 
-  test('HQ warning should be hidden when toggle is off after reload @regression @ui', async ({ studioPage }) => {
+  test('HQ warning should be hidden when toggle is off after reload @ui @regression', async ({ studioPage }) => {
     test.fail(true, 'BUG-009: HQ warning persists after page reload even when toggle resets to off');
     await studioPage.toggleHq();
     await studioPage.goto();
@@ -67,7 +67,7 @@ test.describe('Studio Generation (mocked)', () => {
     await studioPage.goto();
   });
 
-  test('generation trigger transitions to rendering state @smoke @ui', async ({ studioPage }) => {
+  test('generation trigger transitions to rendering state @smoke @ui @regression', async ({ studioPage }) => {
     const response = await studioPage.triggerGenerationAndAwaitResponse(PROMPTS.simple);
     expect(response.status()).toBe(200);
     await studioPage.waitForRenderingState();

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { API_ENDPOINTS, PROMPTS } from '../data';
 
 test.describe('Generation Pipeline API', () => {
-  test('POST /api/generate-video with valid payload returns 200 + taskId @api @smoke', async ({ request }) => {
+  test('POST /api/generate-video with valid payload returns 200 + taskId @api @smoke @regression', async ({ request }) => {
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: {
         prompt: PROMPTS.simple,
@@ -48,7 +48,7 @@ test.describe('Generation Pipeline API', () => {
     expect(body).toHaveProperty('state');
   });
 
-  test('GET /api/video-history returns videos array with expected shape @api @smoke', async ({ request }) => {
+  test('GET /api/video-history returns videos array with expected shape @api @smoke @regression', async ({ request }) => {
     const response = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=5`);
 
     expect(response.status()).toBe(200);

@@ -29,7 +29,7 @@ test.describe('History Page', () => {
     expect(badgeCount).toBeGreaterThan(0);
   });
 
-  test('completed videos have playable video elements @ui', async ({ historyPage }) => {
+  test('completed videos have playable video elements @ui @regression', async ({ historyPage }) => {
     await historyPage.switchToAllVideos();
     const videoCount = await historyPage.videoElements.count();
     expect(videoCount).toBeGreaterThan(0);
@@ -48,7 +48,7 @@ test.describe('History Page', () => {
     expect(badgeCount).toBeGreaterThan(0);
   });
 
-  test('debug info panel should not be visible in production @regression @ui', async ({ historyPage }) => {
+  test('debug info panel should not be visible in production @ui @regression', async ({ historyPage }) => {
     test.fail(true, 'BUG-005: Cookie Debug Info panel is exposed in production');
     await expect(historyPage.debugPanel).toBeHidden();
   });
