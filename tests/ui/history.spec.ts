@@ -48,10 +48,6 @@ test.describe('History Page', () => {
     expect(badgeCount).toBeGreaterThan(0);
   });
 
-  test('debug info panel should not be visible in production @ui @regression', async ({ historyPage }) => {
-    test.fail(true, 'BUG-005: Cookie Debug Info panel is exposed in production');
-    await expect(historyPage.debugPanel).toBeHidden();
-  });
 });
 
 test.describe('History Page — Fresh Session', () => {

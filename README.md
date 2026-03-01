@@ -6,7 +6,7 @@ Playwright test suite for [Pre-Viz Engine](https://previz-engine-m1mm9ayva-valid
 
 ```bash
 pnpm install
-npx playwright install chromium
+npx playwright install --with-deps
 ```
 
 ## Running Tests
@@ -39,7 +39,7 @@ tests/
     navigation.spec.ts    # Navigation smoke tests
     studio.spec.ts        # Studio form + generation trigger + BUG-009
     stock-footage.spec.ts # Script parsing flow tests
-    history.spec.ts       # Video history + BUG-005
+    history.spec.ts       # Video history browsing and playback
   api/
     generation-pipeline.spec.ts  # API contracts + BUG-001/002/003/006
 deliverables/
@@ -66,8 +66,28 @@ deliverables/
 | Studio Bug Regression | 1 | @regression @ui |
 | Stock Footage Form | 3 | @smoke @ui |
 | Stock Footage Parsing | 5 | @ui |
-| History | 8 | @smoke @ui |
-| History Bug Regression | 1 | @regression @ui |
+| History | 7 | @smoke @ui |
 | API Pipeline | 6 | @api @smoke |
 | API Bug Regressions | 4 | @api @regression |
-| **Total** | **42** | |
+| **Total** | **41** | |
+
+## Browser Projects
+
+| Project | Engine | Viewport |
+|---------|--------|----------|
+| chromium | Chromium | 1280x800 |
+| firefox | Firefox | 1280x800 |
+| webkit | WebKit (Safari) | 1280x800 |
+| mobile-chrome | Chromium | 393x851 (Pixel 5) |
+
+Run a specific browser: `npx playwright test --project=firefox`
+
+### Docker / CI
+
+All browsers run in CI via the official Playwright Docker image:
+
+```bash
+docker run --rm -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.58.0 npx playwright test
+```
+
+For GitHub Actions, use the `mcr.microsoft.com/playwright` container or `npx playwright install --with-deps` in the workflow.
