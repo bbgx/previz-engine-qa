@@ -25,7 +25,7 @@ export class StudioPage {
     this.aspectRatioDropdown = optionsSection.getByRole('combobox').nth(1);
     this.aspectRatioOptions = this.aspectRatioDropdown.locator('option');
 
-    this.hqModeLabel = page.getByText('High Quality Mode');
+    this.hqModeLabel = page.getByText('High Quality Mode', { exact: true });
     this.hqToggleButton = this.hqModeLabel.locator('..').getByRole('button');
     this.renderingHeading = page.getByRole('heading', { name: 'Rendering Pre-Viz Videos' });
   }

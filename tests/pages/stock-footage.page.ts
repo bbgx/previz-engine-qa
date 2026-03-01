@@ -9,7 +9,11 @@ export class StockFootagePage {
   readonly hqModeLabel: Locator;
   readonly startOverButton: Locator;
   readonly generateButton: Locator;
-  readonly loadingIndicator: Locator;
+  readonly loadingHeading: Locator;
+  readonly parsedShotsHeading: Locator;
+  readonly parsedShotsDescription: Locator;
+  readonly shotTextboxes: Locator;
+  readonly shotHeadings: Locator;
 
   constructor(private page: Page) {
     this.heading = page.getByRole('heading', { name: 'Stock Footage Generator', level: 2 });
@@ -20,10 +24,14 @@ export class StockFootagePage {
     this.durationDropdown = settingsSection.getByRole('combobox').first();
     this.aspectRatioDropdown = settingsSection.getByRole('combobox').nth(1);
 
-    this.hqModeLabel = page.getByText('High Quality Mode');
+    this.hqModeLabel = page.getByText('High Quality Mode', { exact: true });
     this.startOverButton = page.getByRole('button', { name: /Start Over/i });
     this.generateButton = page.getByRole('button', { name: /Generate.*Videos?/i });
-    this.loadingIndicator = page.getByText(/Generating Your Prompt/i);
+    this.loadingHeading = page.getByRole('heading', { name: 'Generating Your Prompt' });
+    this.parsedShotsHeading = page.getByRole('heading', { name: 'Parsed Shots' });
+    this.parsedShotsDescription = page.getByText(/Found \d+ shots? in your script/);
+    this.shotTextboxes = page.getByRole('textbox', { name: /Edit your prompt/i });
+    this.shotHeadings = page.getByRole('heading', { name: /Shot \d+ of \d+/ });
   }
 
   async goto() {
@@ -38,12 +46,18 @@ export class StockFootagePage {
     await this.parseButton.click();
   }
 
-  async waitForParsedShots() {
-    await expect(this.loadingIndicator).toBeVisible({ timeout: 5_000 });
-    await expect(this.loadingIndicator).toBeHidden({ timeout: 30_000 });
+  async parseScript(text: string) {
+    await this.fillScript(text);
+    await this.clickParse();
+    await this.waitForParsedShots();
   }
 
-  getParsedShotTextboxes() {
-    return this.page.getByRole('textbox').filter({ hasNot: this.scriptTextarea });
+  async waitForParsedShots() {
+    await expect(this.loadingHeading).toBeVisible({ timeout: 5_000 });
+    await expect(this.loadingHeading).toBeHidden({ timeout: 30_000 });
+  }
+
+  async clickStartOver() {
+    await this.startOverButton.click();
   }
 }
