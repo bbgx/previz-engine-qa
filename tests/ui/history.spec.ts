@@ -30,32 +30,21 @@ test.describe('History Page', () => {
 
   test('completed videos have playable video elements @ui', async ({ historyPage }) => {
     await historyPage.switchToAllVideos();
-    const completedCount = await historyPage.completedBadges.count();
-    if (completedCount > 0) {
-      const videoCount = await historyPage.videoElements.count();
-      expect(videoCount).toBeGreaterThan(0);
-    }
+    const videoCount = await historyPage.videoElements.count();
+    expect(videoCount).toBeGreaterThan(0);
   });
 
   test('failed videos show error message @ui', async ({ historyPage }) => {
     await historyPage.switchToAllVideos();
-    const failedCount = await historyPage.failedBadges.count();
-    if (failedCount > 0) {
-      await expect(historyPage.failedErrorMessage.first()).toBeVisible();
-    }
+    await expect(historyPage.failedErrorMessage.first()).toBeVisible();
   });
 
   test('Load More button appears and loads additional videos @ui', async ({ historyPage }) => {
     await historyPage.switchToAllVideos();
-    const totalCount = await historyPage.getVideoCount();
-
-    if (totalCount > 20) {
-      await expect(historyPage.loadMoreButton).toBeVisible();
-      const beforeBadges = await historyPage.statusBadges.count();
-      await historyPage.clickLoadMore();
-      const afterBadges = await historyPage.statusBadges.count();
-      expect(afterBadges).toBeGreaterThanOrEqual(beforeBadges);
-    }
+    await expect(historyPage.loadMoreButton).toBeVisible();
+    await historyPage.clickLoadMore();
+    const badgeCount = await historyPage.statusBadges.count();
+    expect(badgeCount).toBeGreaterThan(0);
   });
 });
 
