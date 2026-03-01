@@ -4,17 +4,31 @@ export class HistoryPage {
   readonly heading: Locator;
   readonly yourVideosTab: Locator;
   readonly allVideosTab: Locator;
-  readonly videoCount: Locator;
+  readonly videoCountText: Locator;
   readonly loadMoreButton: Locator;
   readonly debugPanel: Locator;
+  readonly loadingIndicator: Locator;
+  readonly emptyStateText: Locator;
+  readonly statusBadges: Locator;
+  readonly completedBadges: Locator;
+  readonly failedBadges: Locator;
+  readonly videoElements: Locator;
+  readonly failedErrorMessage: Locator;
 
   constructor(private page: Page) {
     this.heading = page.getByRole('heading', { name: 'Video History', level: 2 });
     this.yourVideosTab = page.getByRole('button', { name: 'Your Videos' });
     this.allVideosTab = page.getByRole('button', { name: 'All Videos' });
-    this.videoCount = page.locator('text=/\\d+ videos?/');
-    this.loadMoreButton = page.locator('button:has(img)').filter({ hasNotText: /Videos|Your|All/ });
+    this.videoCountText = page.locator('text=/\\d+ videos?/');
+    this.loadMoreButton = page.getByRole('button', { name: /Load More/ });
     this.debugPanel = page.getByText('Cookie Debug Info');
+    this.loadingIndicator = page.getByText('Loading videos...');
+    this.emptyStateText = page.getByText(/haven't generated any videos yet/i);
+    this.statusBadges = page.getByText(/Completed|Failed|Pending/);
+    this.completedBadges = page.getByText('Completed');
+    this.failedBadges = page.getByText('Failed', { exact: true });
+    this.videoElements = page.locator('video');
+    this.failedErrorMessage = page.getByText('Your request was blocked by our moderation system.');
   }
 
   async goto() {
@@ -22,34 +36,32 @@ export class HistoryPage {
   }
 
   async waitForVideosLoaded() {
-    await expect(this.page.getByText('Loading videos...')).toBeHidden({ timeout: 15_000 });
+    await expect(this.loadingIndicator).toBeHidden({ timeout: 15_000 });
   }
 
   async switchToAllVideos() {
     await this.allVideosTab.click();
-    await this.waitForVideosLoaded();
+    await this.waitForTabLoaded();
   }
 
   async switchToYourVideos() {
     await this.yourVideosTab.click();
+    await this.waitForTabLoaded();
+  }
+
+  private async waitForTabLoaded() {
+    await this.loadingIndicator.waitFor({ state: 'visible', timeout: 5_000 }).catch(() => {});
+    await expect(this.loadingIndicator).toBeHidden({ timeout: 15_000 });
+  }
+
+  async getVideoCount(): Promise<number> {
+    const text = await this.videoCountText.first().textContent();
+    const match = text?.match(/(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+  }
+
+  async clickLoadMore() {
+    await this.loadMoreButton.click();
     await this.waitForVideosLoaded();
-  }
-
-  getVideoCards() {
-    return this.page.locator('[class*="video"], [class*="card"]').filter({
-      has: this.page.locator('text=/Completed|Failed|Processing|Pending/'),
-    });
-  }
-
-  getFailedVideos() {
-    return this.page.locator('text=Failed').locator('..').locator('..');
-  }
-
-  getCompletedVideos() {
-    return this.page.locator('text=Completed').locator('..').locator('..');
-  }
-
-  getVideoElements() {
-    return this.page.locator('video');
   }
 }
