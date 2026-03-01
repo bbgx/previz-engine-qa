@@ -1,8 +1,5 @@
 import { test as base } from '@playwright/test';
-import { NavigationPage } from './pages/navigation.page';
-import { StudioPage } from './pages/studio.page';
-import { StockFootagePage } from './pages/stock-footage.page';
-import { HistoryPage } from './pages/history.page';
+import { NavigationPage, StudioPage, StockFootagePage, HistoryPage } from './pages';
 
 type Fixtures = {
   nav: NavigationPage;

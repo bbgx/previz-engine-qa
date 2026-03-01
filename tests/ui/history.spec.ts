@@ -1,4 +1,5 @@
 import { test, expect } from '../fixtures';
+import { HistoryPage } from '../pages';
 
 test.describe('History Page', () => {
   test.beforeEach(async ({ historyPage }) => {
@@ -52,9 +53,10 @@ test.describe('History Page — Fresh Session', () => {
   test('Your Videos tab shows empty state for fresh browser @ui', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.goto('/history');
-    await page.getByText('Loading videos...').waitFor({ state: 'hidden', timeout: 15_000 });
-    await expect(page.getByText(/haven't generated any videos yet/i)).toBeVisible();
+    const history = new HistoryPage(page);
+    await history.goto();
+    await history.waitForVideosLoaded();
+    await expect(history.emptyStateText).toBeVisible();
     await context.close();
   });
 });

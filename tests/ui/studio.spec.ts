@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures';
-import { PROMPTS } from '../data/fixtures';
+import { PROMPTS } from '../data';
 
 test.describe('Studio Page', () => {
   test.beforeEach(async ({ studioPage }) => {

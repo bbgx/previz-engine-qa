@@ -19,7 +19,7 @@ export class HistoryPage {
     this.heading = page.getByRole('heading', { name: 'Video History', level: 2 });
     this.yourVideosTab = page.getByRole('button', { name: 'Your Videos' });
     this.allVideosTab = page.getByRole('button', { name: 'All Videos' });
-    this.videoCountText = page.locator('text=/\\d+ videos?/');
+    this.videoCountText = page.getByText(/\d+ videos?/);
     this.loadMoreButton = page.getByRole('button', { name: /Load More/ });
     this.debugPanel = page.getByText('Cookie Debug Info');
     this.loadingIndicator = page.getByText('Loading videos...');

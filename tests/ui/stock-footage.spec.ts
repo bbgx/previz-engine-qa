@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures';
-import { SCREENPLAYS } from '../data/fixtures';
+import { SCREENPLAYS } from '../data';
 
 test.describe('Stock Footage Page', () => {
   test.beforeEach(async ({ stockFootagePage }) => {
