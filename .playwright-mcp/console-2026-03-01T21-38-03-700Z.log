@@ -1,0 +1,2 @@
+[      47ms] [ERROR] [Polling] Error checking video_69a4b092dc788190b13ced7771d34f610094214ad394dee2: TypeError: Failed to fetch
+    at e (https://previz-engine-m1mm9ayva-valid.vercel.app/_next/static/chunks/app/history/page-e6f8428d8ab4f2fe.js?dpl=dpl_GtG3ofaKJsjBERLFv74SGgCiGpdZ:1:7761) @ https://previz-engine-m1mm9ayva-valid.vercel.app/_next/static/chunks/117-7ef83a5c7a899b3d.js?dpl=dpl_GtG3ofaKJsjBERLFv74SGgCiGpdZ:0
