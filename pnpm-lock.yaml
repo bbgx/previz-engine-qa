@@ -8,12 +8,18 @@ importers:
 
   .:
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.11.1
+        version: 4.11.1(playwright-core@1.58.2)
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.0.2)
       '@playwright/test':
         specifier: ^1.58.2
         version: 1.58.2
+      allure-playwright:
+        specifier: ^3.5.0
+        version: 3.5.0(@playwright/test@1.58.2)
       eslint:
         specifier: ^10.0.2
         version: 10.0.2
@@ -25,6 +31,11 @@ importers:
         version: 8.56.1(eslint@10.0.2)(typescript@5.9.3)
 
 packages:
+
+  '@axe-core/playwright@4.11.1':
+    resolution: {integrity: sha512-mKEfoUIB1MkVTht0BGZFXtSAEKXMJoDkyV5YZ9jbBmZCcWDz71tegNsdTkIN8zc/yMi5Gm2kx7Z5YQ9PfWNAWw==}
+    peerDependencies:
+      playwright-core: '>= 1.0.0'
 
   '@eslint-community/eslint-utils@4.9.1':
     resolution: {integrity: sha512-phrYmNiYppR7znFEdqgfWHXR6NCkZEK7hwWDHZUjit/2/U0r6XvkDl0SYnoM51Hq7FhCGdLDT6zxCCOY1hexsQ==}
@@ -167,6 +178,23 @@ packages:
   ajv@6.14.0:
     resolution: {integrity: sha512-IWrosm/yrn43eiKqkfkHis7QioDleaXQHdDVPKg0FSwwd/DuvyX79TZnFOnYpB7dcsFAMmtFztZuXPDvSePkFw==}
 
+  allure-js-commons@3.5.0:
+    resolution: {integrity: sha512-iBVFNQkX5i48QGlb5U3iWm+NiNOl/ucxv6dvEJBNeJTPMI8t0Dn0CuXMQEiv4forSSAppD7FB9uGal2JwunH/A==}
+    peerDependencies:
+      allure-playwright: 3.5.0
+    peerDependenciesMeta:
+      allure-playwright:
+        optional: true
+
+  allure-playwright@3.5.0:
+    resolution: {integrity: sha512-nB6Wj1z7oGz44r4qxN2lJ6lgDQ+FcpL2dyhUsH/syyNPY8x1JLandedc3FA+nqtxoer6qUagsWZfDZnsDO0RXA==}
+    peerDependencies:
+      '@playwright/test': '>=1.53.0'
+
+  axe-core@4.11.1:
+    resolution: {integrity: sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==}
+    engines: {node: '>=4'}
+
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
@@ -175,9 +203,15 @@ packages:
     resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
     engines: {node: 18 || 20 || >=22}
 
+  charenc@0.0.2:
+    resolution: {integrity: sha512-yrLQ/yVUFXkzg7EDQsPieE/53+0RlaWTs+wBrvW36cyilJ2SaDWfl4Yj7MtLTXleV9uEKefbAGUPv2/iWSooRA==}
+
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  crypt@0.0.2:
+    resolution: {integrity: sha512-mCxBlsHFYh9C+HVpiEacem8FEBnMXgU9gy4zmNC+SXAZNB/1idgp/aulFJ4FgCi7GPEVbfyng092GqL2k2rmow==}
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -301,6 +335,9 @@ packages:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
     engines: {node: '>=0.8.19'}
 
+  is-buffer@1.1.6:
+    resolution: {integrity: sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==}
+
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
@@ -331,6 +368,9 @@ packages:
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
+
+  md5@2.3.0:
+    resolution: {integrity: sha512-T1GITYmFaKuO91vxyoQMFETst+O71VUPEU3ze5GNzDm0OWdP8v1ziTaAEPUr/3kLsY3Sftgz242A1SetQiDL7g==}
 
   minimatch@10.2.4:
     resolution: {integrity: sha512-oRjTw/97aTBN0RHbYCdtF1MQfvusSIBQM0IZEgzl6426+8jSC0nF1a/GmnVLpfB9yyr6g6FTqWqiZVbxrtaCIg==}
@@ -440,6 +480,11 @@ packages:
     engines: {node: '>=10'}
 
 snapshots:
+
+  '@axe-core/playwright@4.11.1(playwright-core@1.58.2)':
+    dependencies:
+      axe-core: 4.11.1
+      playwright-core: 1.58.2
 
   '@eslint-community/eslint-utils@4.9.1(eslint@10.0.2)':
     dependencies:
@@ -600,17 +645,34 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
+  allure-js-commons@3.5.0(allure-playwright@3.5.0(@playwright/test@1.58.2)):
+    dependencies:
+      md5: 2.3.0
+    optionalDependencies:
+      allure-playwright: 3.5.0(@playwright/test@1.58.2)
+
+  allure-playwright@3.5.0(@playwright/test@1.58.2):
+    dependencies:
+      '@playwright/test': 1.58.2
+      allure-js-commons: 3.5.0(allure-playwright@3.5.0(@playwright/test@1.58.2))
+
+  axe-core@4.11.1: {}
+
   balanced-match@4.0.4: {}
 
   brace-expansion@5.0.4:
     dependencies:
       balanced-match: 4.0.4
 
+  charenc@0.0.2: {}
+
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  crypt@0.0.2: {}
 
   debug@4.4.3:
     dependencies:
@@ -730,6 +792,8 @@ snapshots:
 
   imurmurhash@0.1.4: {}
 
+  is-buffer@1.1.6: {}
+
   is-extglob@2.1.1: {}
 
   is-glob@4.0.3:
@@ -756,6 +820,12 @@ snapshots:
   locate-path@6.0.0:
     dependencies:
       p-locate: 5.0.0
+
+  md5@2.3.0:
+    dependencies:
+      charenc: 0.0.2
+      crypt: 0.0.2
+      is-buffer: 1.1.6
 
   minimatch@10.2.4:
     dependencies:
