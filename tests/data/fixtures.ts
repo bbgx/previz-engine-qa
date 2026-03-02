@@ -16,6 +16,10 @@ Rain-slicked streets reflect neon signs. A lone figure walks under an umbrella.`
   singleScene: `INT. LABORATORY - DAY
 
 A scientist peers through a microscope. The room hums with equipment. She looks up, startled by a sudden alarm.`,
+
+  simple: `INT. TEST - DAY
+
+A simple scene.`,
 } as const;
 
 export const CHEAP_VIDEO_PAYLOAD = {

@@ -13,16 +13,16 @@ export class NavigationPage {
   readonly notFoundMessage: Locator;
 
   constructor(private page: Page) {
-    this.logoLink = page.getByRole('link', { name: /Pre-Viz Engine/ });
-    this.studioLink = page.getByRole('link', { name: 'Studio' });
-    this.stockFootageLink = page.getByRole('link', { name: 'Stock Footage' });
-    this.historyLink = page.getByRole('link', { name: 'History' });
+    this.logoLink = this.page.getByRole('link', { name: /Pre-Viz Engine/ });
+    this.studioLink = this.page.getByRole('link', { name: 'Studio' });
+    this.stockFootageLink = this.page.getByRole('link', { name: 'Stock Footage' });
+    this.historyLink = this.page.getByRole('link', { name: 'History' });
     this.navLinks = [this.studioLink, this.stockFootageLink, this.historyLink];
-    this.studioHeading = page.getByRole('heading', { name: 'Create Your Scene', level: 2 });
-    this.stockFootageHeading = page.getByRole('heading', { name: 'Stock Footage Generator', level: 2 });
-    this.historyHeading = page.getByRole('heading', { name: 'Video History', level: 2 });
-    this.notFoundHeading = page.getByRole('heading', { name: '404' });
-    this.notFoundMessage = page.getByRole('heading', { name: 'This page could not be found.' });
+    this.studioHeading = this.page.getByRole('heading', { name: 'Create Your Scene', level: 2 });
+    this.stockFootageHeading = this.page.getByRole('heading', { name: 'Stock Footage Generator', level: 2 });
+    this.historyHeading = this.page.getByRole('heading', { name: 'Video History', level: 2 });
+    this.notFoundHeading = this.page.getByRole('heading', { name: '404' });
+    this.notFoundMessage = this.page.getByRole('heading', { name: 'This page could not be found.' });
   }
 
   async goToStudio() {

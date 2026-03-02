@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
 import { API_ENDPOINTS, PROMPTS_EDGE, CHEAP_VIDEO_PAYLOAD } from '../data';
 
 test.describe('Prompt Edge Cases — Security & Encoding', () => {
@@ -23,13 +23,13 @@ test.describe('Prompt Edge Cases — Security & Encoding', () => {
     expect(response.status()).not.toBe(500);
   });
 
-  test('XSS payload in history is rendered as text, not executed @security', async ({ page }) => {
+  test('XSS payload in history is rendered as text, not executed @security', async ({ historyPage, page }) => {
     let dialogTriggered = false;
     page.on('dialog', () => { dialogTriggered = true; });
 
-    await page.goto('/history');
-    await page.getByRole('button', { name: 'All Videos' }).click();
-    await page.getByText(/^\d+ videos?$/).first().waitFor({ timeout: 10_000 });
+    await historyPage.goto();
+    await historyPage.switchToAllVideos();
+    await historyPage.videoCountText.first().waitFor({ timeout: 10_000 });
 
     expect(dialogTriggered).toBe(false);
 

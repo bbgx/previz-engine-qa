@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
 
 test.describe('Security Headers Audit', () => {
   test('response includes Content-Security-Policy header @api @security', async ({ request }) => {

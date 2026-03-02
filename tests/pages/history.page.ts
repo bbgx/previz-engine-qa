@@ -13,16 +13,16 @@ export class HistoryPage {
   readonly failedErrorMessage: Locator;
 
   constructor(private page: Page) {
-    this.heading = page.getByRole('heading', { name: 'Video History', level: 2 });
-    this.yourVideosTab = page.getByRole('button', { name: 'Your Videos' });
-    this.allVideosTab = page.getByRole('button', { name: 'All Videos' });
-    this.videoCountText = page.getByText(/^\d+ videos?$/);
-    this.loadMoreButton = page.getByRole('button', { name: /Load More/ });
-    this.loadingIndicator = page.getByText('Loading videos...');
-    this.emptyStateText = page.getByText(/haven't generated any videos yet/i);
-    this.statusBadges = page.getByText(/^(Completed|Failed|Pending)$/);
-    this.videoElements = page.locator('video');
-    this.failedErrorMessage = page.getByText('Your request was blocked by our moderation system.');
+    this.heading = this.page.getByRole('heading', { name: 'Video History', level: 2 });
+    this.yourVideosTab = this.page.getByRole('button', { name: 'Your Videos' });
+    this.allVideosTab = this.page.getByRole('button', { name: 'All Videos' });
+    this.videoCountText = this.page.getByText(/^\d+ videos?$/);
+    this.loadMoreButton = this.page.getByRole('button', { name: /Load More/ });
+    this.loadingIndicator = this.page.getByText('Loading videos...');
+    this.emptyStateText = this.page.getByText(/haven't generated any videos yet/i);
+    this.statusBadges = this.page.getByText(/^(Completed|Failed|Pending)$/);
+    this.videoElements = this.page.locator('video');
+    this.failedErrorMessage = this.page.getByText('Your request was blocked by our moderation system.');
   }
 
   async goto() {

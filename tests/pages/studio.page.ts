@@ -13,23 +13,29 @@ export class StudioPage {
   readonly hqToggleButton: Locator;
   readonly hqWarning: Locator;
   readonly renderingHeading: Locator;
+  readonly errorMessage: Locator;
+  readonly networkErrorMessage: Locator;
+  readonly crashIndicator: Locator;
 
   constructor(private page: Page) {
-    this.heading = page.getByRole('heading', { name: 'Create Your Scene', level: 2 });
-    this.promptTextarea = page.getByRole('textbox', { name: 'Direct Prompt for Sora' });
-    this.generateButton = page.getByRole('button', { name: /Generate.*Videos?/i });
-    this.videoCountSpinner = page.getByRole('spinbutton', { name: 'Number of Videos to Generate' });
+    this.heading = this.page.getByRole('heading', { name: 'Create Your Scene', level: 2 });
+    this.promptTextarea = this.page.getByRole('textbox', { name: 'Direct Prompt for Sora' });
+    this.generateButton = this.page.getByRole('button', { name: /Generate.*Videos?/i });
+    this.videoCountSpinner = this.page.getByRole('spinbutton', { name: 'Number of Videos to Generate' });
 
-    const optionsSection = page.locator('section, div').filter({ has: page.getByRole('heading', { name: 'Video Generation Options' }) });
+    const optionsSection = this.page.locator('section, div').filter({ has: this.page.getByRole('heading', { name: 'Video Generation Options' }) });
     this.durationDropdown = optionsSection.getByRole('combobox').first();
     this.durationOptions = this.durationDropdown.locator('option');
     this.aspectRatioDropdown = optionsSection.getByRole('combobox').nth(1);
     this.aspectRatioOptions = this.aspectRatioDropdown.locator('option');
 
-    this.hqModeLabel = page.getByText('High Quality Mode', { exact: true });
+    this.hqModeLabel = this.page.getByText('High Quality Mode', { exact: true });
     this.hqToggleButton = this.hqModeLabel.locator('..').getByRole('button');
-    this.hqWarning = page.getByText(/Warning:.*High quality mode/i);
-    this.renderingHeading = page.getByRole('heading', { name: 'Rendering Pre-Viz Videos' });
+    this.hqWarning = this.page.getByText(/Warning:.*High quality mode/i);
+    this.renderingHeading = this.page.getByRole('heading', { name: 'Rendering Pre-Viz Videos' });
+    this.errorMessage = this.page.getByText(/error|failed|something went wrong/i).first();
+    this.networkErrorMessage = this.page.getByText(/error|failed|network|something went wrong/i).first();
+    this.crashIndicator = this.page.getByText(/unhandled|unexpected|cannot read/i);
   }
 
   async goto() {
@@ -77,6 +83,18 @@ export class StudioPage {
       { timeout: 15_000 },
     );
     return calls;
+  }
+
+  async hasVisibleError(): Promise<boolean> {
+    return this.errorMessage.isVisible({ timeout: 5_000 }).catch(() => false);
+  }
+
+  async hasNetworkError(): Promise<boolean> {
+    return this.networkErrorMessage.isVisible({ timeout: 5_000 }).catch(() => false);
+  }
+
+  async hasPageCrashed(): Promise<boolean> {
+    return this.crashIndicator.isVisible().catch(() => false);
   }
 
   async mockGenerateApi() {

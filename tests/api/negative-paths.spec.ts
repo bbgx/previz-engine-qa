@@ -1,5 +1,5 @@
 import { test, expect } from '../fixtures';
-import { API_ENDPOINTS, PROMPTS } from '../data';
+import { API_ENDPOINTS, PROMPTS, SCREENPLAYS } from '../data';
 
 test.describe('Negative Paths — API Down & Error States', () => {
   test('studio handles generate-video 500 gracefully @ui @regression', async ({ studioPage, page }) => {
@@ -11,7 +11,7 @@ test.describe('Negative Paths — API Down & Error States', () => {
     await studioPage.fillPrompt(PROMPTS.simple);
     await studioPage.clickGenerate();
 
-    const errorVisible = await page.getByText(/error|failed|something went wrong/i).first().isVisible({ timeout: 5_000 }).catch(() => false);
+    const errorVisible = await studioPage.hasVisibleError();
     expect(errorVisible).toBe(true);
   });
 
@@ -22,7 +22,7 @@ test.describe('Negative Paths — API Down & Error States', () => {
     await studioPage.fillPrompt(PROMPTS.simple);
     await studioPage.clickGenerate();
 
-    const errorVisible = await page.getByText(/error|failed|network|something went wrong/i).first().isVisible({ timeout: 5_000 }).catch(() => false);
+    const errorVisible = await studioPage.hasNetworkError();
     expect(errorVisible).toBe(true);
   });
 
@@ -33,8 +33,7 @@ test.describe('Negative Paths — API Down & Error States', () => {
     await studioPage.fillPrompt(PROMPTS.simple);
     await studioPage.clickGenerate();
 
-    await expect(page.locator('body')).not.toBeEmpty();
-    const crashed = await page.getByText(/unhandled|unexpected|cannot read/i).isVisible().catch(() => false);
+    const crashed = await studioPage.hasPageCrashed();
     expect(crashed, 'Page should not show an unhandled crash').toBe(false);
   });
 
@@ -46,11 +45,10 @@ test.describe('Negative Paths — API Down & Error States', () => {
       return route.continue();
     });
     await stockFootagePage.goto();
-    await stockFootagePage.fillScript('INT. TEST - DAY\nA simple scene.');
+    await stockFootagePage.fillScript(SCREENPLAYS.simple);
     await stockFootagePage.clickParse();
 
-    await expect(page.locator('body')).not.toBeEmpty();
-    const crashed = await page.getByText(/unhandled|unexpected|cannot read/i).isVisible().catch(() => false);
+    const crashed = await stockFootagePage.hasPageCrashed();
     expect(crashed, 'Page should not show an unhandled crash').toBe(false);
   });
 });

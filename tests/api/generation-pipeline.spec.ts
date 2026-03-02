@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../fixtures';
 import { API_ENDPOINTS, PROMPTS, CHEAP_VIDEO_PAYLOAD } from '../data';
 
 test.describe('Generation Pipeline API', () => {
