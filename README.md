@@ -77,22 +77,18 @@ deliverables/
 | Area | Tests | Tags |
 |------|-------|------|
 | Navigation | 5 | @smoke @ui |
-| Studio Form | 8 | @smoke @ui |
-| Studio Generation (mocked) | 2 | @smoke @ui |
-| Studio Bug Regression | 1 | @regression @ui |
-| Stock Footage Form | 3 | @smoke @ui |
-| Stock Footage Parsing | 5 | @ui |
+| Studio Form + Generation | 10 | @smoke @ui @regression |
+| Stock Footage Form + Parsing | 8 | @smoke @ui |
 | Stock Footage Edge Cases | 8 | @ui |
 | History | 8 | @smoke @ui |
 | Mobile Viewport | 4 | @regression @ui |
-| API Pipeline | 7 | @api @smoke |
-| API Bug Regressions | 3 | @api @regression |
+| API Pipeline + Bug Regressions | 10 | @api @smoke @regression |
 | API Negative Paths | 8 | @api @ui @regression |
 | Prompt Edge Cases | 10 | @api @security |
 | Security Headers & Cookies | 8 | @api @security |
 | Accessibility (axe-core) | 3 | @a11y @regression |
-| Visual Regression | 3 | @visual |
-| **Total (per project)** | **81** | |
+| Visual Regression | 2 | @visual |
+| **Total unique tests** | **84** | |
 
 ## Browser Projects
 

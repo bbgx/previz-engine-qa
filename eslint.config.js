@@ -9,7 +9,7 @@ export default tseslint.config(
     ...playwright.configs['flat/recommended'],
     files: ['tests/**/*.ts'],
     rules: {
-      'playwright/no-skipped-test': 'off',
+      'playwright/no-skipped-test': 'warn',
     },
   },
   {

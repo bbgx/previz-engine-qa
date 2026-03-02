@@ -33,9 +33,9 @@ test.describe('Negative Paths — API Down & Error States', () => {
     await studioPage.fillPrompt(PROMPTS.simple);
     await studioPage.clickGenerate();
 
-    await page.waitForTimeout(3_000);
-    const pageContent = await page.content();
-    expect(pageContent).toBeTruthy();
+    await expect(page.locator('body')).not.toBeEmpty();
+    const crashed = await page.getByText(/unhandled|unexpected|cannot read/i).isVisible().catch(() => false);
+    expect(crashed, 'Page should not show an unhandled crash').toBe(false);
   });
 
   test('stock footage handles parse failure @ui @regression', async ({ stockFootagePage, page }) => {
@@ -49,9 +49,9 @@ test.describe('Negative Paths — API Down & Error States', () => {
     await stockFootagePage.fillScript('INT. TEST - DAY\nA simple scene.');
     await stockFootagePage.clickParse();
 
-    await page.waitForTimeout(5_000);
-    const pageContent = await page.content();
-    expect(pageContent).toBeTruthy();
+    await expect(page.locator('body')).not.toBeEmpty();
+    const crashed = await page.getByText(/unhandled|unexpected|cannot read/i).isVisible().catch(() => false);
+    expect(crashed, 'Page should not show an unhandled crash').toBe(false);
   });
 });
 
@@ -60,14 +60,24 @@ test.describe('Negative Paths — API Contract Edge Cases', () => {
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: { prompt: PROMPTS.simple, aspect_ratio: 'INVALID', duration: '8' },
     });
-    expect([400, 200]).toContain(response.status());
+    if (response.status() === 200) {
+      const body = await response.json();
+      expect(body).toHaveProperty('taskId');
+    } else {
+      expect(response.status()).toBe(400);
+    }
   });
 
   test('generate-video with invalid duration returns error @api', async ({ request }) => {
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: { prompt: PROMPTS.simple, aspect_ratio: 'landscape', duration: '999' },
     });
-    expect([400, 200]).toContain(response.status());
+    if (response.status() === 200) {
+      const body = await response.json();
+      expect(body).toHaveProperty('taskId');
+    } else {
+      expect(response.status()).toBe(400);
+    }
   });
 
   test('video-history with negative offset returns error or empty @api', async ({ request }) => {
@@ -76,7 +86,7 @@ test.describe('Negative Paths — API Contract Edge Cases', () => {
   });
 
   test('video-history with huge limit is handled @api', async ({ request }) => {
-    test.fail(true, 'BUG: API accepts arbitrarily large limit values without server-side cap');
+    test.fail(true, 'BUG-010: API accepts arbitrarily large limit values without server-side cap');
     const response = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=99999`);
     expect(response.status()).toBe(200);
     const body = await response.json();

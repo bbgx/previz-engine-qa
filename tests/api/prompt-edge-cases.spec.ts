@@ -24,16 +24,18 @@ test.describe('Prompt Edge Cases — Security & Encoding', () => {
   });
 
   test('XSS payload in history is rendered as text, not executed @security', async ({ page }) => {
+    let dialogTriggered = false;
+    page.on('dialog', () => { dialogTriggered = true; });
+
     await page.goto('/history');
     await page.getByRole('button', { name: 'All Videos' }).click();
     await page.getByText(/^\d+ videos?$/).first().waitFor({ timeout: 10_000 });
 
-    const dialogTriggered = await page.evaluate(() => {
-      let triggered = false;
-      window.addEventListener('alert', () => { triggered = true; });
-      return triggered;
-    });
     expect(dialogTriggered).toBe(false);
+
+    const html = await page.content();
+    expect(html).not.toContain('<script>alert');
+    expect(html).not.toContain('onerror=alert');
   });
 
   test('unicode prompt is accepted @api', async ({ request }) => {
