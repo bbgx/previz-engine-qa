@@ -1,0 +1,68 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Pre-Viz Engine v1.9.0 Transform your vision into pre-visualization" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - heading "Pre-Viz Engine" [level=1] [ref=e19]
+              - generic [ref=e20]: v1.9.0
+            - paragraph [ref=e21]: Transform your vision into pre-visualization
+        - generic [ref=e22]:
+          - link "Studio" [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+            - generic [ref=e33]: Studio
+          - link "Stock Footage" [ref=e34] [cursor=pointer]:
+            - /url: /stock-footage
+            - img [ref=e35]
+            - generic [ref=e38]: Stock Footage
+          - link "History" [ref=e39] [cursor=pointer]:
+            - /url: /history
+            - img [ref=e40]
+            - generic [ref=e43]: History
+    - main [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - heading "Create Your Scene" [level=2] [ref=e48]
+          - paragraph [ref=e49]: Enter your prompt to generate pre-visualization videos
+        - generic [ref=e50]:
+          - paragraph [ref=e52]: This mode sends your prompt directly to Sora without any modifications or enhancements. Your exact words will be used to generate the videos.
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - text: Direct Prompt for Sora
+              - textbox "Direct Prompt for Sora" [ref=e55]:
+                - /placeholder: A cinematic shot of a detective walking into a dimly lit warehouse. Camera follows from behind with a slow steadicam movement. Volumetric lighting creates dramatic shadows. The detective pauses mid-frame, hearing something off-screen. Camera slowly pushes in as tension builds. 24fps, anamorphic lens, noir aesthetic.
+              - paragraph [ref=e56]: Be as specific as possible with camera movements, lighting, pacing, and technical details
+            - generic [ref=e57]:
+              - text: Number of Videos to Generate
+              - generic [ref=e58]:
+                - spinbutton "Number of Videos to Generate" [ref=e59]: "3"
+                - paragraph [ref=e60]: Generate 3 videos simultaneously with the same prompt (1-5)
+            - generic [ref=e61]:
+              - heading "Video Generation Options" [level=3] [ref=e62]
+              - generic [ref=e63]:
+                - generic [ref=e64]:
+                  - text: Video Duration
+                  - combobox [ref=e65]:
+                    - option "4 seconds"
+                    - option "8 seconds" [selected]
+                    - option "12 seconds"
+                - generic [ref=e66]:
+                  - text: Aspect Ratio
+                  - combobox [ref=e67]:
+                    - option "Landscape" [selected]
+                    - option "Portrait"
+              - generic [ref=e69]:
+                - generic [ref=e70]: High Quality Mode
+                - button [ref=e71] [cursor=pointer]
+            - button "Generate 3 Videos Directly" [disabled]:
+              - img
+              - text: Generate 3 Videos Directly
+  - alert [ref=e73]
+```
