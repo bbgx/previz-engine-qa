@@ -1,0 +1,387 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Pre-Viz Engine v1.9.0 Transform your vision into pre-visualization" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e10]:
+            - generic [ref=e11]:
+              - heading "Pre-Viz Engine" [level=1] [ref=e12]
+              - generic [ref=e13]: v1.9.0
+            - paragraph [ref=e14]: Transform your vision into pre-visualization
+        - generic [ref=e15]:
+          - link "Studio" [ref=e16] [cursor=pointer]:
+            - /url: /
+            - img [ref=e17]
+            - generic [ref=e19]: Studio
+          - link "Stock Footage" [ref=e20] [cursor=pointer]:
+            - /url: /stock-footage
+            - img [ref=e21]
+            - generic [ref=e24]: Stock Footage
+          - link "History" [ref=e25] [cursor=pointer]:
+            - /url: /history
+            - img [ref=e26]
+            - generic [ref=e29]: History
+    - main [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - heading "Video History" [level=2] [ref=e33]
+          - paragraph [ref=e34]: View all previously generated videos
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - generic [ref=e38]:
+                - img [ref=e39]
+                - generic [ref=e48]: Cookie Debug Info
+              - button "Hide" [ref=e49] [cursor=pointer]
+            - generic [ref=e50]:
+              - generic [ref=e51]:
+                - generic [ref=e52]: "Browser Cookie:"
+                - code [ref=e53]: f8143327-3c4b-4c66-8168-3d066d1bff11
+              - generic [ref=e54]:
+                - generic [ref=e55]: "Current Filter:"
+                - code [ref=e56]: all
+              - generic [ref=e57]: Videos with matching user_cookie_id will appear in "Your Videos" tab.
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - button "Your Videos" [ref=e60] [cursor=pointer]:
+                - img [ref=e61]
+                - generic [ref=e64]: Your Videos
+              - button "All Videos" [ref=e65] [cursor=pointer]:
+                - img [ref=e66]
+                - generic [ref=e71]: All Videos
+            - generic [ref=e72]:
+              - generic [ref=e73]: 3586 videos
+              - button [ref=e74] [cursor=pointer]:
+                - img [ref=e75]
+          - generic [ref=e80]:
+            - generic [ref=e82]:
+              - generic [ref=e83]:
+                - generic [ref=e84]:
+                  - img [ref=e85]
+                  - text: Pending
+                - generic [ref=e88]: Just now
+              - paragraph [ref=e90]: 日本語のプロンプト — 桜が咲く春の風景
+              - generic [ref=e91]:
+                - generic [ref=e92]: landscape
+                - generic [ref=e93]: •
+                - generic [ref=e94]: 8s
+                - generic [ref=e95]: •
+                - generic [ref=e96]: standard
+              - generic [ref=e98]:
+                - generic [ref=e99]: "Cookie ID:"
+                - code [ref=e100]: anonymous
+            - generic [ref=e102]:
+              - generic [ref=e103]:
+                - generic [ref=e104]:
+                  - img [ref=e105]
+                  - text: Pending
+                - generic [ref=e108]: Just now
+              - paragraph [ref=e110]: "'; DROP TABLE videos; --"
+              - generic [ref=e111]:
+                - generic [ref=e112]: landscape
+                - generic [ref=e113]: •
+                - generic [ref=e114]: 8s
+                - generic [ref=e115]: •
+                - generic [ref=e116]: standard
+              - generic [ref=e118]:
+                - generic [ref=e119]: "Cookie ID:"
+                - code [ref=e120]: anonymous
+            - generic [ref=e122]:
+              - generic [ref=e123]:
+                - generic [ref=e124]:
+                  - img [ref=e125]
+                  - text: Pending
+                - generic [ref=e128]: Just now
+              - paragraph [ref=e130]: 日本語のプロンプト — 桜が咲く春の風景
+              - generic [ref=e131]:
+                - generic [ref=e132]: landscape
+                - generic [ref=e133]: •
+                - generic [ref=e134]: 8s
+                - generic [ref=e135]: •
+                - generic [ref=e136]: standard
+              - generic [ref=e138]:
+                - generic [ref=e139]: "Cookie ID:"
+                - code [ref=e140]: anonymous
+            - generic [ref=e142]:
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - img [ref=e145]
+                  - text: Pending
+                - generic [ref=e148]: Just now
+              - paragraph [ref=e150]: <img src=x onerror=alert(1)>
+              - generic [ref=e151]:
+                - generic [ref=e152]: landscape
+                - generic [ref=e153]: •
+                - generic [ref=e154]: 8s
+                - generic [ref=e155]: •
+                - generic [ref=e156]: standard
+              - generic [ref=e158]:
+                - generic [ref=e159]: "Cookie ID:"
+                - code [ref=e160]: anonymous
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e164]:
+                  - img [ref=e165]
+                  - text: Pending
+                - generic [ref=e168]: Just now
+              - paragraph [ref=e170]: "'; DROP TABLE videos; --"
+              - generic [ref=e171]:
+                - generic [ref=e172]: landscape
+                - generic [ref=e173]: •
+                - generic [ref=e174]: 8s
+                - generic [ref=e175]: •
+                - generic [ref=e176]: standard
+              - generic [ref=e178]:
+                - generic [ref=e179]: "Cookie ID:"
+                - code [ref=e180]: anonymous
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - img [ref=e185]
+                  - text: Pending
+                - generic [ref=e188]: Just now
+              - paragraph [ref=e190]: <script>alert("xss")</script>
+              - generic [ref=e191]:
+                - generic [ref=e192]: landscape
+                - generic [ref=e193]: •
+                - generic [ref=e194]: 8s
+                - generic [ref=e195]: •
+                - generic [ref=e196]: standard
+              - generic [ref=e198]:
+                - generic [ref=e199]: "Cookie ID:"
+                - code [ref=e200]: anonymous
+            - generic [ref=e202]:
+              - generic [ref=e203]:
+                - generic [ref=e204]:
+                  - img [ref=e205]
+                  - text: Pending
+                - generic [ref=e208]: Just now
+              - paragraph [ref=e210]: <img src=x onerror=alert(1)>
+              - generic [ref=e211]:
+                - generic [ref=e212]: landscape
+                - generic [ref=e213]: •
+                - generic [ref=e214]: 8s
+                - generic [ref=e215]: •
+                - generic [ref=e216]: standard
+              - generic [ref=e218]:
+                - generic [ref=e219]: "Cookie ID:"
+                - code [ref=e220]: anonymous
+            - generic [ref=e222]:
+              - generic [ref=e223]:
+                - generic [ref=e224]:
+                  - img [ref=e225]
+                  - text: Pending
+                - generic [ref=e228]: Just now
+              - paragraph [ref=e230]: A red ball bouncing on a white floor
+              - generic [ref=e231]:
+                - generic [ref=e232]: landscape
+                - generic [ref=e233]: •
+                - generic [ref=e234]: 8s
+                - generic [ref=e235]: •
+                - generic [ref=e236]: standard
+              - generic [ref=e238]:
+                - generic [ref=e239]: "Cookie ID:"
+                - code [ref=e240]: anonymous
+            - generic [ref=e242]:
+              - generic [ref=e243]:
+                - generic [ref=e244]:
+                  - img [ref=e245]
+                  - text: Pending
+                - generic [ref=e248]: Just now
+              - paragraph [ref=e250]: A red ball bouncing on a white floor
+              - generic [ref=e251]:
+                - generic [ref=e252]: landscape
+                - generic [ref=e253]: •
+                - generic [ref=e254]: 8s
+                - generic [ref=e255]: •
+                - generic [ref=e256]: standard
+              - generic [ref=e258]:
+                - generic [ref=e259]: "Cookie ID:"
+                - code [ref=e260]: anonymous
+            - generic [ref=e262]:
+              - generic [ref=e263]:
+                - generic [ref=e264]:
+                  - img [ref=e265]
+                  - text: Pending
+                - generic [ref=e268]: Just now
+              - paragraph [ref=e270]: A red ball bouncing on a white floor
+              - generic [ref=e271]:
+                - generic [ref=e272]: landscape
+                - generic [ref=e273]: •
+                - generic [ref=e274]: 8s
+                - generic [ref=e275]: •
+                - generic [ref=e276]: standard
+              - generic [ref=e278]:
+                - generic [ref=e279]: "Cookie ID:"
+                - code [ref=e280]: anonymous
+            - generic [ref=e282]:
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - img [ref=e285]
+                  - text: Pending
+                - generic [ref=e288]: Just now
+              - paragraph [ref=e290]: A red ball bouncing on a white floor
+              - generic [ref=e291]:
+                - generic [ref=e292]: landscape
+                - generic [ref=e293]: •
+                - generic [ref=e294]: 8s
+                - generic [ref=e295]: •
+                - generic [ref=e296]: standard
+              - generic [ref=e298]:
+                - generic [ref=e299]: "Cookie ID:"
+                - code [ref=e300]: anonymous
+            - generic [ref=e302]:
+              - generic [ref=e303]:
+                - generic [ref=e304]:
+                  - img [ref=e305]
+                  - text: Pending
+                - generic [ref=e308]: Just now
+              - paragraph [ref=e310]: ../../../etc/passwd
+              - generic [ref=e311]:
+                - generic [ref=e312]: landscape
+                - generic [ref=e313]: •
+                - generic [ref=e314]: 8s
+                - generic [ref=e315]: •
+                - generic [ref=e316]: standard
+              - generic [ref=e318]:
+                - generic [ref=e319]: "Cookie ID:"
+                - code [ref=e320]: anonymous
+            - generic [ref=e322]:
+              - generic [ref=e323]:
+                - generic [ref=e324]:
+                  - img [ref=e325]
+                  - text: Pending
+                - generic [ref=e328]: Just now
+              - paragraph [ref=e330]: 🌅 A beautiful sunset over the ocean 🌊 with dolphins 🐬
+              - generic [ref=e331]:
+                - generic [ref=e332]: landscape
+                - generic [ref=e333]: •
+                - generic [ref=e334]: 8s
+                - generic [ref=e335]: •
+                - generic [ref=e336]: standard
+              - generic [ref=e338]:
+                - generic [ref=e339]: "Cookie ID:"
+                - code [ref=e340]: anonymous
+            - generic [ref=e342]:
+              - generic [ref=e343]:
+                - generic [ref=e344]:
+                  - img [ref=e345]
+                  - text: Pending
+                - generic [ref=e348]: Just now
+              - paragraph [ref=e350]: "${process.env.SECRET_KEY}"
+              - generic [ref=e351]:
+                - generic [ref=e352]: landscape
+                - generic [ref=e353]: •
+                - generic [ref=e354]: 8s
+                - generic [ref=e355]: •
+                - generic [ref=e356]: standard
+              - generic [ref=e358]:
+                - generic [ref=e359]: "Cookie ID:"
+                - code [ref=e360]: anonymous
+            - generic [ref=e362]:
+              - generic [ref=e363]:
+                - generic [ref=e364]:
+                  - img [ref=e365]
+                  - text: Pending
+                - generic [ref=e368]: Just now
+              - paragraph [ref=e370]: 日本語のプロンプト — 桜が咲く春の風景
+              - generic [ref=e371]:
+                - generic [ref=e372]: landscape
+                - generic [ref=e373]: •
+                - generic [ref=e374]: 8s
+                - generic [ref=e375]: •
+                - generic [ref=e376]: standard
+              - generic [ref=e378]:
+                - generic [ref=e379]: "Cookie ID:"
+                - code [ref=e380]: anonymous
+            - generic [ref=e382]:
+              - generic [ref=e383]:
+                - generic [ref=e384]:
+                  - img [ref=e385]
+                  - text: Pending
+                - generic [ref=e388]: Just now
+              - paragraph [ref=e390]: A red ball bouncing on a white floor
+              - generic [ref=e391]:
+                - generic [ref=e392]: landscape
+                - generic [ref=e393]: •
+                - generic [ref=e394]: 8s
+                - generic [ref=e395]: •
+                - generic [ref=e396]: standard
+              - generic [ref=e398]:
+                - generic [ref=e399]: "Cookie ID:"
+                - code [ref=e400]: anonymous
+            - generic [ref=e402]:
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - img [ref=e405]
+                  - text: Pending
+                - generic [ref=e408]: Just now
+              - paragraph [ref=e410]: A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A very long prompt
+              - generic [ref=e411]:
+                - generic [ref=e412]: landscape
+                - generic [ref=e413]: •
+                - generic [ref=e414]: 8s
+                - generic [ref=e415]: •
+                - generic [ref=e416]: standard
+              - generic [ref=e418]:
+                - generic [ref=e419]: "Cookie ID:"
+                - code [ref=e420]: anonymous
+            - generic [ref=e422]:
+              - generic [ref=e423]:
+                - generic [ref=e424]:
+                  - img [ref=e425]
+                  - text: Pending
+                - generic [ref=e428]: Just now
+              - paragraph [ref=e430]: A red ball bouncing on a white floor
+              - generic [ref=e431]:
+                - generic [ref=e432]: landscape
+                - generic [ref=e433]: •
+                - generic [ref=e434]: 8s
+                - generic [ref=e435]: •
+                - generic [ref=e436]: standard
+              - generic [ref=e438]:
+                - generic [ref=e439]: "Cookie ID:"
+                - code [ref=e440]: anonymous
+            - generic [ref=e442]:
+              - generic [ref=e443]:
+                - generic [ref=e444]:
+                  - img [ref=e445]
+                  - text: Pending
+                - generic [ref=e448]: Just now
+              - paragraph [ref=e450]: A red ball bouncing on a white floor
+              - generic [ref=e451]:
+                - generic [ref=e452]: landscape
+                - generic [ref=e453]: •
+                - generic [ref=e454]: 8s
+                - generic [ref=e455]: •
+                - generic [ref=e456]: standard
+              - generic [ref=e458]:
+                - generic [ref=e459]: "Cookie ID:"
+                - code [ref=e460]: anonymous
+            - generic [ref=e462]:
+              - generic [ref=e463]:
+                - generic [ref=e464]:
+                  - img [ref=e465]
+                  - text: Pending
+                - generic [ref=e468]: Just now
+              - paragraph [ref=e470]: <img src=x onerror=alert(1)>
+              - generic [ref=e471]:
+                - generic [ref=e472]: landscape
+                - generic [ref=e473]: •
+                - generic [ref=e474]: 8s
+                - generic [ref=e475]: •
+                - generic [ref=e476]: standard
+              - generic [ref=e478]:
+                - generic [ref=e479]: "Cookie ID:"
+                - code [ref=e480]: anonymous
+          - generic [ref=e481]:
+            - button "Loading..." [disabled]:
+              - img
+              - text: Loading...
+  - alert [ref=e482]
+```

@@ -1,0 +1,64 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e5]:
+        - link "Pre-Viz Engine v1.9.0 Transform your vision into pre-visualization" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - img [ref=e8]
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - heading "Pre-Viz Engine" [level=1] [ref=e19]
+              - generic [ref=e20]: v1.9.0
+            - paragraph [ref=e21]: Transform your vision into pre-visualization
+        - generic [ref=e22]:
+          - link "Studio" [ref=e23] [cursor=pointer]:
+            - /url: /
+            - img [ref=e24]
+            - generic [ref=e33]: Studio
+          - link "Stock Footage" [ref=e34] [cursor=pointer]:
+            - /url: /stock-footage
+            - img [ref=e35]
+            - generic [ref=e38]: Stock Footage
+          - link "History" [ref=e39] [cursor=pointer]:
+            - /url: /history
+            - img [ref=e40]
+            - generic [ref=e43]: History
+    - main [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]:
+          - heading "Stock Footage Generator" [level=2] [ref=e47]
+          - paragraph [ref=e48]: Paste your script to extract shots and generate videos
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - text: Script Text
+            - textbox "Script Text" [ref=e52]:
+              - /placeholder: Paste your script here...
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - img [ref=e55]
+              - heading "Video Generation Settings" [level=3] [ref=e58]
+            - generic [ref=e59]:
+              - generic [ref=e60]:
+                - text: Video Duration
+                - combobox [ref=e61]:
+                  - option "4 seconds"
+                  - option "8 seconds" [selected]
+                  - option "12 seconds"
+              - generic [ref=e62]:
+                - text: Aspect Ratio
+                - combobox [ref=e63]:
+                  - option "Portrait" [selected]
+                  - option "Landscape"
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - generic [ref=e66]: High Quality Mode
+                - button [ref=e67] [cursor=pointer]
+              - paragraph [ref=e70]: "⚠️ Warning: High quality mode can take 3x longer to generate"
+          - button "Parse Script" [disabled]:
+            - img
+            - text: Parse Script
+  - alert [ref=e71]
+```
