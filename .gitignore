@@ -6,3 +6,5 @@ blob-report/
 .pnpm-store/
 .playwright-mcp/
 deliverables/
+allure-results/
+allure-report/
