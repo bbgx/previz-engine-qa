@@ -1,1 +1,1 @@
-export { PROMPTS, SCREENPLAYS, API_ENDPOINTS } from './fixtures';
+export { PROMPTS, SCREENPLAYS, API_ENDPOINTS, SCREENPLAYS_EDGE, PROMPTS_EDGE } from './fixtures';
