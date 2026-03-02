@@ -10,6 +10,10 @@
     "test:regression": "playwright test --grep @regression",
     "lint": "eslint tests/",
     "report": "playwright show-report",
+    "test:a11y": "playwright test --grep @a11y",
+    "test:visual": "playwright test --grep @visual",
+    "test:visual:update": "playwright test --grep @visual --update-snapshots",
+    "test:security": "playwright test --grep @security",
     "allure:generate": "allure generate allure-results -o allure-report --clean",
     "allure:open": "allure open allure-report"
   },

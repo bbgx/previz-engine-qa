@@ -17,7 +17,13 @@ pnpm test:smoke           # smoke tests only
 pnpm test:ui              # UI tests only
 pnpm test:api             # API tests only
 pnpm test:regression      # release-gate suite (core flows + bug validations)
+pnpm test:a11y            # accessibility scans (axe-core WCAG 2.1 AA)
+pnpm test:visual          # visual regression (screenshot comparison)
+pnpm test:visual:update   # update visual regression baselines
+pnpm test:security        # security header and cookie audits
 pnpm report               # open HTML report
+pnpm allure:generate      # generate Allure report from results
+pnpm allure:open          # open Allure report in browser
 pnpm lint                 # ESLint
 ```
 
@@ -27,7 +33,7 @@ pnpm lint                 # ESLint
 tests/
   fixtures.ts             # Playwright custom fixtures (POM injection)
   data/
-    fixtures.ts           # Test data (prompts, screenplays, endpoints)
+    fixtures.ts           # Test data (prompts, screenplays, endpoints, edge cases)
     index.ts              # Barrel export
   pages/
     navigation.page.ts    # Navigation POM
@@ -39,10 +45,19 @@ tests/
     navigation.spec.ts    # Navigation smoke tests
     studio.spec.ts        # Studio form + generation trigger + BUG-007
     stock-footage.spec.ts # Script parsing flow tests
+    stock-footage-edge.spec.ts  # Script parsing edge cases (unicode, malformed, etc.)
     history.spec.ts       # Video history browsing and playback
     mobile.spec.ts        # Mobile viewport responsive bugs (BUG-009)
   api/
     generation-pipeline.spec.ts  # API contracts + BUG-001/002/004
+    negative-paths.spec.ts       # API error handling + network failures
+    prompt-edge-cases.spec.ts    # SQL injection, XSS, unicode, long prompts
+    security-headers.spec.ts     # CSP, HSTS, cookie flags audit
+  a11y/
+    page-scans.spec.ts    # axe-core WCAG 2.1 AA scans per page
+  visual/
+    page-snapshots.spec.ts # Visual regression baselines
+  __screenshots__/         # Visual regression baseline images
 deliverables/
   qa-report.md            # Full QA report, bug pack, Claude Code usage
 ```
@@ -67,11 +82,17 @@ deliverables/
 | Studio Bug Regression | 1 | @regression @ui |
 | Stock Footage Form | 3 | @smoke @ui |
 | Stock Footage Parsing | 5 | @ui |
+| Stock Footage Edge Cases | 8 | @ui |
 | History | 8 | @smoke @ui |
 | Mobile Viewport | 4 | @regression @ui |
 | API Pipeline | 7 | @api @smoke |
 | API Bug Regressions | 3 | @api @regression |
-| **Total** | **45** | |
+| API Negative Paths | 8 | @api @ui @regression |
+| Prompt Edge Cases | 10 | @api @security |
+| Security Headers & Cookies | 8 | @api @security |
+| Accessibility (axe-core) | 3 | @a11y @regression |
+| Visual Regression | 3 | @visual |
+| **Total (per project)** | **81** | |
 
 ## Browser Projects
 
