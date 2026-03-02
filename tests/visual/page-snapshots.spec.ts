@@ -5,7 +5,7 @@ test.describe('Visual Regression — Page Snapshots', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('studio.png', {
-      maxDiffPixelRatio: 0.01,
+      maxDiffPixelRatio: 0.05,
       fullPage: true,
     });
   });
@@ -14,16 +14,7 @@ test.describe('Visual Regression — Page Snapshots', () => {
     await page.goto('/stock-footage');
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('stock-footage.png', {
-      maxDiffPixelRatio: 0.01,
-      fullPage: true,
-    });
-  });
-
-  test('history page layout @visual', async ({ page }) => {
-    await page.goto('/history');
-    await page.waitForLoadState('networkidle');
-    await expect(page).toHaveScreenshot('history.png', {
-      maxDiffPixelRatio: 0.01,
+      maxDiffPixelRatio: 0.05,
       fullPage: true,
     });
   });

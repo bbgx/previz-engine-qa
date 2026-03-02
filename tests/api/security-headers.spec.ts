@@ -2,21 +2,18 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Security Headers Audit', () => {
   test('response includes Content-Security-Policy header @api @security', async ({ request }) => {
-    test.fail(true, 'No CSP header set on the application');
     const response = await request.get('/');
     const csp = response.headers()['content-security-policy'];
     expect(csp, 'CSP header should be set').toBeDefined();
   });
 
   test('response includes X-Content-Type-Options: nosniff @api @security', async ({ request }) => {
-    test.fail(true, 'Missing X-Content-Type-Options header');
     const response = await request.get('/');
     const header = response.headers()['x-content-type-options'];
     expect(header).toBe('nosniff');
   });
 
   test('response includes X-Frame-Options @api @security', async ({ request }) => {
-    test.fail(true, 'Missing X-Frame-Options header — app can be embedded in iframes');
     const response = await request.get('/');
     const header = response.headers()['x-frame-options'];
     expect(header, 'X-Frame-Options should be DENY or SAMEORIGIN').toBeDefined();
@@ -29,7 +26,6 @@ test.describe('Security Headers Audit', () => {
   });
 
   test('previz_user_id cookie has Secure flag @security', async ({ page }) => {
-    test.fail(true, 'Cookie missing Secure flag');
     await page.goto('/history');
     await page.waitForLoadState('networkidle');
     const cookies = await page.context().cookies();
@@ -39,7 +35,6 @@ test.describe('Security Headers Audit', () => {
   });
 
   test('previz_user_id cookie has HttpOnly flag @security', async ({ page }) => {
-    test.fail(true, 'Cookie is not HttpOnly — accessible via JavaScript');
     await page.goto('/history');
     await page.waitForLoadState('networkidle');
     const cookies = await page.context().cookies();

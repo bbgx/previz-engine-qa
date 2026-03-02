@@ -1,8 +1,40 @@
 services:
-  tests:
+  shard-1:
     build: .
+    command: npx playwright test --shard=1/4
     volumes:
       - ./test-results:/work/test-results
       - ./playwright-report:/work/playwright-report
+      - ./allure-results:/work/allure-results
+    environment:
+      - CI=true
+
+  shard-2:
+    build: .
+    command: npx playwright test --shard=2/4
+    volumes:
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report
+      - ./allure-results:/work/allure-results
+    environment:
+      - CI=true
+
+  shard-3:
+    build: .
+    command: npx playwright test --shard=3/4
+    volumes:
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report
+      - ./allure-results:/work/allure-results
+    environment:
+      - CI=true
+
+  shard-4:
+    build: .
+    command: npx playwright test --shard=4/4
+    volumes:
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report
+      - ./allure-results:/work/allure-results
     environment:
       - CI=true

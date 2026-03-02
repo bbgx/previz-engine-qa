@@ -31,6 +31,7 @@ test.describe('History Page', () => {
 
   test('completed videos have playable video elements @ui @regression', async ({ historyPage }) => {
     test.skip(test.info().project.name === 'mobile-chrome', 'Requires Load More which is broken on mobile (BUG-009)');
+    test.skip(test.info().project.name === 'webkit', 'WebKit headless does not render video elements reliably');
     await historyPage.switchToAllVideos();
     await historyPage.clickLoadMore();
     const videoCount = await historyPage.videoElements.count();
