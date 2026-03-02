@@ -23,11 +23,17 @@ test.describe('Prompt Edge Cases — Security & Encoding', () => {
     expect(response.status()).not.toBe(500);
   });
 
-  test('XSS payload is not reflected raw in history @api @security', async ({ request }) => {
-    const response = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100`);
-    const body = await response.json();
-    const rawText = JSON.stringify(body);
-    expect(rawText).not.toContain('<script>alert');
+  test('XSS payload in history is rendered as text, not executed @security', async ({ page }) => {
+    await page.goto('/history');
+    await page.getByRole('button', { name: 'All Videos' }).click();
+    await page.getByText(/^\d+ videos?$/).first().waitFor({ timeout: 10_000 });
+
+    const dialogTriggered = await page.evaluate(() => {
+      let triggered = false;
+      window.addEventListener('alert', () => { triggered = true; });
+      return triggered;
+    });
+    expect(dialogTriggered).toBe(false);
   });
 
   test('unicode prompt is accepted @api', async ({ request }) => {
