@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { API_ENDPOINTS, PROMPTS } from '../data';
+import { API_ENDPOINTS, PROMPTS, CHEAP_VIDEO_PAYLOAD } from '../data';
 
 test.describe('Generation Pipeline API', () => {
   test('POST /api/generate-video with valid payload returns 200 + taskId @api @smoke @regression', async ({ request }) => {
@@ -97,9 +97,7 @@ test.describe('Generation Pipeline — Data Integrity', () => {
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: {
         prompt: PROMPTS.simple,
-        n_variants: 1,
-        aspect_ratio: 'landscape',
-        duration: '8',
+        ...CHEAP_VIDEO_PAYLOAD,
       },
     });
 

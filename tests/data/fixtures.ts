@@ -18,6 +18,12 @@ Rain-slicked streets reflect neon signs. A lone figure walks under an umbrella.`
 A scientist peers through a microscope. The room hums with equipment. She looks up, startled by a sudden alarm.`,
 } as const;
 
+export const CHEAP_VIDEO_PAYLOAD = {
+  n_variants: 1,
+  aspect_ratio: 'portrait',
+  duration: '4',
+} as const;
+
 export const API_ENDPOINTS = {
   generateVideo: '/api/generate-video',
   videoStatus: '/api/video-status',
