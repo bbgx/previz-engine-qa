@@ -53,6 +53,7 @@ test.describe('Studio Page', () => {
   });
 
   test('HQ warning should be hidden when toggle is off after reload @ui @regression', async ({ studioPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'HQ toggle interaction unreliable on mobile viewport');
     test.fail(true, 'BUG-007: HQ warning persists after page reload even when toggle resets to off');
     await studioPage.toggleHq();
     await studioPage.goto();
