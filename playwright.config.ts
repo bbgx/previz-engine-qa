@@ -6,10 +6,9 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
-  reporter: [
-    ['html'],
-    ['allure-playwright'],
-  ],
+  reporter: process.env.CI
+    ? [['blob'], ['allure-playwright']]
+    : [['html'], ['allure-playwright']],
   timeout: 30_000,
   snapshotPathTemplate: '{testDir}/__screenshots__/{projectName}/{testFilePath}/{arg}{ext}',
 
