@@ -1,4 +1,4 @@
-import { type Page, type Locator, expect } from '@playwright/test';
+import { type Page, type Locator } from '@playwright/test';
 
 export class StockFootagePage {
   readonly heading: Locator;
@@ -53,8 +53,8 @@ export class StockFootagePage {
   }
 
   async waitForParsedShots() {
-    await expect(this.loadingHeading).toBeVisible({ timeout: 5_000 });
-    await expect(this.loadingHeading).toBeHidden({ timeout: 30_000 });
+    await this.loadingHeading.waitFor({ state: 'visible', timeout: 5_000 });
+    await this.loadingHeading.waitFor({ state: 'hidden', timeout: 30_000 });
   }
 
   async clickStartOver() {

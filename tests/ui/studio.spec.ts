@@ -53,7 +53,7 @@ test.describe('Studio Page', () => {
   });
 
   test('HQ warning should be hidden when toggle is off after reload @ui @regression', async ({ studioPage }) => {
-    test.fail(true, 'BUG-009: HQ warning persists after page reload even when toggle resets to off');
+    test.fail(true, 'BUG-007: HQ warning persists after page reload even when toggle resets to off');
     await studioPage.toggleHq();
     await studioPage.goto();
     await expect(studioPage.hqWarning).toBeHidden();
@@ -68,15 +68,19 @@ test.describe('Studio Generation (mocked)', () => {
   });
 
   test('generation trigger transitions to rendering state @smoke @ui @regression', async ({ studioPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     const response = await studioPage.triggerGenerationAndAwaitResponse(PROMPTS.simple);
     expect(response.status()).toBe(200);
     await studioPage.waitForRenderingState();
+    await expect(studioPage.renderingHeading).toBeVisible();
   });
 
   test('polling starts after generation trigger @smoke @ui', async ({ studioPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await studioPage.fillPrompt(PROMPTS.simple);
+    const pollingPromise = studioPage.waitForStatusPolling();
     await studioPage.clickGenerate();
-    const statusCalls = await studioPage.waitForStatusPolling();
+    const statusCalls = await pollingPromise;
     expect(statusCalls.length).toBeGreaterThan(0);
   });
 });

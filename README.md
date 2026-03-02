@@ -37,11 +37,12 @@ tests/
     index.ts              # Barrel export
   ui/
     navigation.spec.ts    # Navigation smoke tests
-    studio.spec.ts        # Studio form + generation trigger + BUG-009
+    studio.spec.ts        # Studio form + generation trigger + BUG-007
     stock-footage.spec.ts # Script parsing flow tests
     history.spec.ts       # Video history browsing and playback
+    mobile.spec.ts        # Mobile viewport responsive bugs (BUG-009)
   api/
-    generation-pipeline.spec.ts  # API contracts + BUG-001/002/003/006
+    generation-pipeline.spec.ts  # API contracts + BUG-001/002/004
 deliverables/
   qa-report.md            # Full QA report, bug pack, Claude Code usage
 ```
@@ -66,10 +67,11 @@ deliverables/
 | Studio Bug Regression | 1 | @regression @ui |
 | Stock Footage Form | 3 | @smoke @ui |
 | Stock Footage Parsing | 5 | @ui |
-| History | 7 | @smoke @ui |
-| API Pipeline | 6 | @api @smoke |
-| API Bug Regressions | 4 | @api @regression |
-| **Total** | **41** | |
+| History | 8 | @smoke @ui |
+| Mobile Viewport | 4 | @regression @ui |
+| API Pipeline | 7 | @api @smoke |
+| API Bug Regressions | 3 | @api @regression |
+| **Total** | **45** | |
 
 ## Browser Projects
 
@@ -82,12 +84,14 @@ deliverables/
 
 Run a specific browser: `npx playwright test --project=firefox`
 
-### Docker / CI
-
-All browsers run in CI via the official Playwright Docker image:
+### Docker
 
 ```bash
-docker run --rm -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.58.0 npx playwright test
+docker compose up          # run all tests via docker-compose
+docker compose up --build  # rebuild and run
+
+# or without compose:
+docker run --rm -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.58.0-noble npx playwright test
 ```
 
 For GitHub Actions, use the `mcr.microsoft.com/playwright` container or `npx playwright install --with-deps` in the workflow.

@@ -1,4 +1,4 @@
-import { type Page, type Locator, expect } from '@playwright/test';
+import { type Page, type Locator } from '@playwright/test';
 
 export class HistoryPage {
   readonly heading: Locator;
@@ -9,8 +9,6 @@ export class HistoryPage {
   readonly loadingIndicator: Locator;
   readonly emptyStateText: Locator;
   readonly statusBadges: Locator;
-  readonly completedBadges: Locator;
-  readonly failedBadges: Locator;
   readonly videoElements: Locator;
   readonly failedErrorMessage: Locator;
 
@@ -18,13 +16,11 @@ export class HistoryPage {
     this.heading = page.getByRole('heading', { name: 'Video History', level: 2 });
     this.yourVideosTab = page.getByRole('button', { name: 'Your Videos' });
     this.allVideosTab = page.getByRole('button', { name: 'All Videos' });
-    this.videoCountText = page.getByText(/\d+ videos?/);
+    this.videoCountText = page.getByText(/^\d+ videos?$/);
     this.loadMoreButton = page.getByRole('button', { name: /Load More/ });
     this.loadingIndicator = page.getByText('Loading videos...');
     this.emptyStateText = page.getByText(/haven't generated any videos yet/i);
-    this.statusBadges = page.getByText(/Completed|Failed|Pending/);
-    this.completedBadges = page.getByText('Completed');
-    this.failedBadges = page.getByText('Failed', { exact: true });
+    this.statusBadges = page.getByText(/^(Completed|Failed|Pending)$/);
     this.videoElements = page.locator('video');
     this.failedErrorMessage = page.getByText('Your request was blocked by our moderation system.');
   }
@@ -34,7 +30,7 @@ export class HistoryPage {
   }
 
   async waitForVideosLoaded() {
-    await expect(this.loadingIndicator).toBeHidden({ timeout: 15_000 });
+    await this.loadingIndicator.waitFor({ state: 'hidden', timeout: 15_000 });
   }
 
   async switchToAllVideos() {
@@ -49,7 +45,7 @@ export class HistoryPage {
 
   private async waitForTabLoaded() {
     await this.loadingIndicator.waitFor({ state: 'visible', timeout: 5_000 }).catch(() => {});
-    await expect(this.loadingIndicator).toBeHidden({ timeout: 15_000 });
+    await this.loadingIndicator.waitFor({ state: 'hidden', timeout: 15_000 });
   }
 
   async getVideoCount(): Promise<number> {

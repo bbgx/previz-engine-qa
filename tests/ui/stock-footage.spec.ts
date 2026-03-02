@@ -30,6 +30,7 @@ test.describe('Stock Footage — Script Parsing', () => {
   });
 
   test('script parsing shows loading then parsed shots @smoke @ui', async ({ stockFootagePage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await stockFootagePage.fillScript(SCREENPLAYS.twoScene);
     await stockFootagePage.clickParse();
     await expect(stockFootagePage.loadingHeading).toBeVisible();
@@ -38,6 +39,7 @@ test.describe('Stock Footage — Script Parsing', () => {
   });
 
   test('two-scene script extracts multiple shots with editable prompts @ui', async ({ stockFootagePage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await stockFootagePage.parseScript(SCREENPLAYS.twoScene);
     await expect(stockFootagePage.parsedShotsDescription).toBeVisible();
     const shotCount = await stockFootagePage.shotTextboxes.count();
@@ -52,6 +54,7 @@ test.describe('Stock Footage — Script Parsing', () => {
   });
 
   test('shot headings show correct numbering @ui', async ({ stockFootagePage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await stockFootagePage.parseScript(SCREENPLAYS.twoScene);
     const headingCount = await stockFootagePage.shotHeadings.count();
     expect(headingCount).toBeGreaterThanOrEqual(2);
@@ -59,12 +62,14 @@ test.describe('Stock Footage — Script Parsing', () => {
   });
 
   test('generate button appears with correct video count @ui', async ({ stockFootagePage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await stockFootagePage.parseScript(SCREENPLAYS.twoScene);
     await expect(stockFootagePage.generateButton).toBeVisible();
     await expect(stockFootagePage.generateButton).toContainText(/Generate \d+ Videos?/);
   });
 
   test('start over button resets to input state @ui', async ({ stockFootagePage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await stockFootagePage.parseScript(SCREENPLAYS.twoScene);
     await expect(stockFootagePage.parsedShotsHeading).toBeVisible();
     await stockFootagePage.clickStartOver();

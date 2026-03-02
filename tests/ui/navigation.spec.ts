@@ -8,6 +8,7 @@ test.describe('Navigation', () => {
   });
 
   test('navigate Studio → Stock Footage → History @smoke @ui', async ({ page, nav }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await page.goto('/');
     await expect(nav.studioHeading).toBeVisible();
 

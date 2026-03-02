@@ -75,7 +75,6 @@ test.describe('Generation Pipeline API', () => {
 
 test.describe('Generation Pipeline — Data Integrity', () => {
   test('video history should have valid aspect_ratio values @api @regression', async ({ request }) => {
-    test.fail(true, 'BUG-002: some videos have INVALID_VALUE as aspect_ratio');
     const response = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100`);
     const body = await response.json();
 
@@ -87,14 +86,14 @@ test.describe('Generation Pipeline — Data Integrity', () => {
   });
 
   test('video-status should return sanitized error for invalid taskId @api @regression', async ({ request }) => {
-    test.fail(true, 'BUG-006: video-status leaks internal Sora API error structure');
+    test.fail(true, 'BUG-004: video-status leaks internal Sora API error structure');
     const response = await request.get(`${API_ENDPOINTS.videoStatus}?taskId=invalid-task-123`);
 
     expect(response.status()).toBe(400);
   });
 
   test('generate-video should include rate limiting headers @api @regression', async ({ request }) => {
-    test.fail(true, 'BUG-003: no rate limiting on generation endpoint');
+    test.fail(true, 'BUG-002: no rate limiting on generation endpoint');
     const response = await request.post(API_ENDPOINTS.generateVideo, {
       data: {
         prompt: PROMPTS.simple,
@@ -110,10 +109,14 @@ test.describe('Generation Pipeline — Data Integrity', () => {
 
   test('innocent short prompts should not be flagged by moderation @api @regression', async ({ request }) => {
     test.fail(true, 'BUG-001: Sora moderation produces false positives on innocuous prompts');
-    const historyResponse = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100`);
-    const body = await historyResponse.json();
+    const allVideos = [];
+    for (let offset = 0; offset < 300; offset += 100) {
+      const res = await request.get(`${API_ENDPOINTS.videoHistory}?filter=all&limit=100&offset=${offset}`);
+      const page = await res.json();
+      allVideos.push(...page.videos);
+    }
 
-    const falsePositives = body.videos.filter(
+    const falsePositives = allVideos.filter(
       (v: { status: string; prompt: string }) =>
         v.status === 'failed' && v.prompt.length < 20,
     );

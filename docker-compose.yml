@@ -1,0 +1,8 @@
+services:
+  tests:
+    build: .
+    volumes:
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report
+    environment:
+      - CI=true

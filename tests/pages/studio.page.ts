@@ -1,4 +1,4 @@
-import { type Page, type Locator, type Response, expect } from '@playwright/test';
+import { type Page, type Locator, type Response } from '@playwright/test';
 
 export class StudioPage {
   readonly heading: Locator;
@@ -62,7 +62,7 @@ export class StudioPage {
   }
 
   async waitForRenderingState() {
-    await expect(this.renderingHeading).toBeVisible({ timeout: 10_000 });
+    await this.renderingHeading.waitFor({ state: 'visible', timeout: 10_000 });
   }
 
   async waitForStatusPolling(): Promise<string[]> {

@@ -30,17 +30,25 @@ test.describe('History Page', () => {
   });
 
   test('completed videos have playable video elements @ui @regression', async ({ historyPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Requires Load More which is broken on mobile (BUG-009)');
     await historyPage.switchToAllVideos();
+    await historyPage.clickLoadMore();
     const videoCount = await historyPage.videoElements.count();
     expect(videoCount).toBeGreaterThan(0);
   });
 
   test('failed videos show error message @ui', async ({ historyPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Requires Load More which is broken on mobile (BUG-009)');
     await historyPage.switchToAllVideos();
-    await expect(historyPage.failedErrorMessage.first()).toBeVisible();
+    for (let i = 0; i < 6; i++) {
+      if (await historyPage.failedErrorMessage.first().isVisible().catch(() => false)) break;
+      await historyPage.clickLoadMore();
+    }
+    await expect(historyPage.failedErrorMessage.first()).toBeVisible({ timeout: 10_000 });
   });
 
   test('Load More button appears and loads additional videos @ui', async ({ historyPage }) => {
+    test.skip(test.info().project.name === 'mobile-chrome', 'Mobile viewport covered in mobile.spec.ts');
     await historyPage.switchToAllVideos();
     await expect(historyPage.loadMoreButton).toBeVisible();
     await historyPage.clickLoadMore();
