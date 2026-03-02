@@ -11,6 +11,7 @@ export default defineConfig({
     ['allure-playwright'],
   ],
   timeout: 30_000,
+  snapshotPathTemplate: '{testDir}/__screenshots__/{projectName}/{testFilePath}/{arg}{ext}',
 
   use: {
     baseURL: 'https://previz-engine-m1mm9ayva-valid.vercel.app',
